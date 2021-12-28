@@ -29,9 +29,8 @@ function start() { // Inicio da função start()
 	   jogo.pressionou[e.which] = false;
 	});
 		
-	
 	//Game Loop
-	jogo.timer = setInterval(loop,30);
+	jogo.timer = setInterval(loop, 30);
 	
 	/*** FUNCTION DEFINITIONS BELOW ***/
 
@@ -41,8 +40,6 @@ function start() { // Inicio da função start()
 	movejogador();
 
 	} // Fim da função loop()
-
-
 
 	//Função que movimenta o fundo do jogo
 	
@@ -58,14 +55,15 @@ function start() { // Inicio da função start()
 	function movejogador() {
 		
 	if (jogo.pressionou[TECLA.W]) {
-		var topo = parseInt($("#jogador").css("top"));
-		$("#jogador").css("top",topo-10);
+		var topo = parseInt($("#jogador" ).css("top"));
+		if (topo >= 10){
+			$("#jogador").css("top",topo-10);}
 		}
-		
-	if (jogo.pressionou[TECLA.S]) {
-		
+
+	if (jogo.pressionou[TECLA.S]){
 		var topo = parseInt($("#jogador").css("top"));
-		$("#jogador").css("top",topo+10);	
+		if (topo <= 434){
+			$("#jogador").css("top",topo+10);}
 		}
 		
 	if (jogo.pressionou[TECLA.D]) {
