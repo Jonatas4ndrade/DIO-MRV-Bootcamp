@@ -18,6 +18,11 @@ function start() { // Inicio da função start()
 	
 	jogo.pressionou = [];
 
+	/*** ENEMY VARIABLES ***/
+	var velocidade = 5; // Enemy speed
+	var posicaoY = parseInt(Math.random() * 334); // Enemy Vertical Position
+
+
 	//Verifica se o usuário pressionou alguma tecla	
 	//Arrays are already objects, so it is possible assign new properties.
 	
@@ -38,6 +43,9 @@ function start() { // Inicio da função start()
 	
 	movefundo();
 	movejogador();
+	moveExecutive();
+	moveinimigo1();
+	moveinimigo2();
 
 	} // Fim da função loop()
 
@@ -70,5 +78,45 @@ function start() { // Inicio da função start()
 		//Chama função Disparo	
 		}
 	} // fim da função movejogador()
+
+	function moveExecutive() {
+	
+		posicaoX = parseInt($("#amigo").css("left"));
+		$("#amigo").css("left",posicaoX+2);
+					
+			if (posicaoX>906) {
+				
+			$("#amigo").css("left",0);
+						
+			}
+	
+	} // fim da função moveamigo()
+
+	function moveinimigo1() {
+
+		posicaoX = parseInt($("#inimigo1").css("left"));
+		$("#inimigo1").css("left",posicaoX - velocidade);
+		$("#inimigo1").css("top",posicaoY);
+			
+			if (posicaoX<=-400) {
+			posicaoY = parseInt(Math.random() * 334);
+			$("#inimigo1").css("left", 900);
+			$("#inimigo1").css("top",posicaoY);
+				
+			}
+	} //Fim da função moveinimigo1()
+
+	function moveinimigo2() {
+        posicaoX = parseInt($("#inimigo2").css("left"));
+		$("#inimigo2").css("left",posicaoX-3);
+				
+		if (posicaoX<=-200) {
+			
+		$("#inimigo2").css("left",775);
+					
+		}
+	} // Fim da função moveinimigo2()
+
+	
 		
 }
