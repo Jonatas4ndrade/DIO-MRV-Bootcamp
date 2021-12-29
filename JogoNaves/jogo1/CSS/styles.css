@@ -1,3 +1,5 @@
+/*UI ELEMENTS */
+
 @font-face {
 	font-family: title;
 	src:url(../fontes/ANODETONOONE.TTF);
@@ -49,15 +51,7 @@ body {
 	border-style:solid;
 }
 
-.invisibleCol {
-	margin-top: calc(50vh - 315px);
-	display:flex;
-	flex-direction:column;
-	width:15%;
-	height:630px;
-	background-color: transparent;
-	z-index: 9;
-}
+/* IN-GAME ENTITIES*/
 
 #jogador {
 	width:256px;
@@ -97,6 +91,27 @@ background-image:url(../imgs/apache.png);
 	background-image:url(../imgs/executive.png);
 }
 
+#disparo {
+	width: 64px;
+	height: 19px;
+	position: absolute;
+    background-image:url(../imgs/missile.png);
+    animation: play3 .15s steps(2) infinite;
+    -webkit-animation: play3 .15s steps(2) infinite;
+	-moz-animation: play3 .15s steps(2) infinite;
+	-ms-animation: play3 .15s steps(2) infinite;
+	-o-animation: play3 .15s steps(2) infinite;
+}
+
+#missile {
+	width: 64px;
+	height: 30px;
+	position: absolute;
+    background-image:url(../imgs/bomb_mini.png);
+}
+
+/* ANIMATION EFFECTS */
+
 .anima1 {
 	background-image:url(../imgs/helicoptero.png);
 	animation:play .15s steps(2) infinite;
@@ -106,34 +121,6 @@ background-image:url(../imgs/apache.png);
        -ms-animation: play .15s steps(2) infinite;
        -o-animation: play .15s steps(2) infinite;
 }
-
-@keyframes play {
-	from {background-position:0px;}
-	to {background-position:-512px;}
-}
-
-
-@-webkit-keyframes play {
-   from { background-position:0px; }
-     to { background-position: -512px; }
-}
-
-@-moz-keyframes play {
-   from { background-position:0px; }
-     to { background-position: -512px; }
-}
-
-@-ms-keyframes play {
-   from { background-position:0px; }
-     to { background-position: -512px; }
-}
-
-@-o-keyframes play {
-   from { background-position:0px; }
-     to { background-position: -512px; }
-}
-
-
 
 .anima2 {
     background-image:url(../imgs/inimigo1.png);
@@ -154,29 +141,69 @@ background-image:url(../imgs/apache.png);
          -o-animation: play2 .9s steps(12) infinite;
 }
 
+/*PLAY*/
+@keyframes play {
+	from {background-position:0px;}
+	to {background-position:-512px;}
+}
+@-webkit-keyframes play {
+   from { background-position:0px; }
+     to { background-position: -512px; }
+}
+@-moz-keyframes play {
+   from { background-position:0px; }
+     to { background-position: -512px; }
+}
+@-ms-keyframes play {
+   from { background-position:0px; }
+     to { background-position: -512px; }
+}
+@-o-keyframes play {
+   from { background-position:0px; }
+     to { background-position: -512px; }
+}
+
+/*PLAY2*/
 @keyframes play2 {
 	from {background-position: 528px; }
 	to {background-position:     0px; }
 }
-
 @-webkit-keyframes play2 {
    from { background-position: 528px; }
      to { background-position: 0px;   }
 }
-
 @-moz-keyframes play2 {
    from { background-position:  528px; }
      to { background-position:    0px; }
 }
-
 @-ms-keyframes play2 {
    from { background-position:  528px; }
      to { background-position:    0px; }
 }
-
 @-o-keyframes play2 {
    from { background-position:  528px; }
      to { background-position:    0px; }
 }
 
 
+/*PLAY3*/
+@keyframes play3 {
+	from {background-position:0px;}
+	to {background-position:-128px;}
+}
+@-webkit-keyframes play3 {
+   from { background-position:0px; }
+     to { background-position: -128px; }
+}
+@-moz-keyframes play3 {
+   from { background-position:0px; }
+     to { background-position: -128px; }
+}
+@-ms-keyframes play3 {
+   from { background-position:0px; }
+     to { background-position: -128px; }
+}
+@-o-keyframes play3 {
+   from { background-position:0px; }
+     to { background-position: -128px; }
+}
