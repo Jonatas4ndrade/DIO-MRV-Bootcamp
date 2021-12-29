@@ -20,7 +20,7 @@ function start() { // Inicio da função start()
 	jogo.pressionou = [];
 
 	/*** ENEMY VARIABLES ***/
-	var velocidade = 5; // Enemy speed
+	var velocidade = 7; // Enemy speed
 	var posicaoY = parseInt(Math.random() * 334); // Enemy Vertical Position
 	
 	/*** OTHER VARIABLES***/
@@ -51,6 +51,8 @@ function start() { // Inicio da função start()
 	moveExecutive();
 	moveinimigo1();
 	moveinimigo2();
+	colisao();
+
 
 	} // Game Loop closed
 
@@ -61,7 +63,7 @@ function start() { // Inicio da função start()
 	function movefundo() {
 	
 	esquerda = parseInt($("#fundoGame").css("background-position"));
-	$("#fundoGame").css("background-position",esquerda-1);
+	$("#fundoGame").css("background-position",esquerda-2);
 	
 	} // fim da função movefundo()
 	
@@ -142,7 +144,7 @@ function start() { // Inicio da função start()
 			$("#disparo").css("left",tiroX);
 			var tempoDisparo = window.setInterval(executaDisparo1, 30);
 		
-		} //Fecha podeAtirar
+		} //"Shot available" check finished.
 	 
 		function executaDisparo1() {
 		posicaoX = parseInt($("#disparo").css("left"));
@@ -153,8 +155,7 @@ function start() { // Inicio da função start()
 				tempoDisparo=null;
 				$("#disparo").remove();
 				shot1Ready=true;
-						
-					   }
+			}
 		} // Fecha executaDisparo()
 	} // Fecha disparo()
 
@@ -166,13 +167,13 @@ function start() { // Inicio da função start()
 			topo = parseInt($("#jogador").css("top"))
 			posicaoX= parseInt($("#jogador").css("left"))
 			tiroX = posicaoX + 140;
-			posiY=topo+74;
+			posiY=topo + 58;
 			$("#fundoGame").append("<div id='missile'></div");
 			$("#missile").css("top",posiY);
 			$("#missile").css("left",tiroX);
 			var tempoDisparo = window.setInterval(executaDisparo2, 30);
 		
-		} //Fecha podeAtirar
+		} // "Shot available" check finished.
 	 
 		function executaDisparo2() {
 		posicaoX = parseInt($("#missile").css("left"));
@@ -191,5 +192,57 @@ function start() { // Inicio da função start()
 					   }
 		} // Fecha executaDisparo()
 	} // Fecha disparo()
+	
+	function colisao() {
+		var colisao1 = ($("#jogador").collision($("#inimigo1")));
+		// jogador com o inimigo1
+			
+			if (colisao1.length>0) {
+				
+			inimigo1X = parseInt($("#inimigo1").css("left"));
+			inimigo1Y = parseInt($("#inimigo1").css("top"));
+			explosao1(inimigo1X - 65,inimigo1Y);
 		
+			posicaoY = parseInt(Math.random() * 334);
+			$("#inimigo1").css("left",920);
+			$("#inimigo1").css("top",posicaoY);
+			}
+		
+		} //Fim da função colisao()
+
+		//Explosão 1
+	function explosao1(inimigo1X,inimigo1Y) {
+		//Add explosion and broken glass screen entities.
+		$("#fundoGame").append("<div id='brokenScreen'></div");
+		$("#fundoGame").append("<div id='explosao1'></div");
+		
+		//Background added via jquery, compatibility issues.
+		$("#brokenScreen").css("background-image", "url(imgs/broken_screen.png)");
+		$("#explosao1").css("background-image", "url(imgs/explosao.png)");
+		
+		//Add player flashing effect on hit.
+		$("#jogador").fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+		
+		//Arguably improves readability
+		var exp=$("#explosao1");
+		var glass=$("#brokenScreen")
+
+		glass.animate({opacity:0}, 1000);
+		exp.css("top", inimigo1Y);
+		exp.css("left", inimigo1X);
+		exp.animate({width:200, opacity:0}, "slow");
+		
+	
+		var tempoExplosao=window.setInterval(removeExplosao, 1000);
+	
+			function removeExplosao() {
+			
+				exp.remove();
+				glass.remove();
+				window.clearInterval(tempoExplosao);
+				tempoExplosao=null;
+			
+			}
+		
+	} // Fim da função explosao1()
 }

@@ -40,6 +40,8 @@ body {
  	margin-top:100px;
 	text-align:center;
 	padding:10px;
+	border-color:#2b1d02;
+	border-style:solid;
 
 }
 
@@ -47,7 +49,7 @@ body {
     width:950px;
 	height:630px;
 	background-image:url(../imgs/fundo_game.jpg);
-	border-color:#FFF;
+	border-color:#2b1d02;
 	border-style:solid;
 }
 
@@ -108,6 +110,30 @@ background-image:url(../imgs/apache.png);
 	height: 30px;
 	position: absolute;
     background-image:url(../imgs/bomb_mini.png);
+}
+
+#explosao1 {
+	width:15px;
+	height:87px;
+	position:absolute;
+
+}
+
+#explosao2 {
+	width:15px;
+	height:87px;
+	position:absolute;
+	
+}
+
+#brokenScreen{
+	position:absolute;
+	width:100%;
+	height:100%;
+	z-index: 9;
+	opacity:85;
+	background-size: cover;
+    background-repeat: no-repeat;
 }
 
 /* ANIMATION EFFECTS */
