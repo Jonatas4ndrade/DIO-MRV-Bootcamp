@@ -4,10 +4,7 @@ function start() { // Inicio da função start()
 	$("#fundoGame").append("<div id='placar'></div>");
 	$("#fundoGame").append("<div id='energy'></div>");
 
-
 	//Appends game entities
-	
-
 	$("#fundoGame").append("<div id='jogador' class='anima1'></div>");
 	$("#fundoGame").append("<div id='inimigo1' class='anima2'></div>");
 	$("#fundoGame").append("<div id='inimigo2'></div>");
@@ -27,6 +24,19 @@ function start() { // Inicio da função start()
 	var velocidade2 =5; // Truck speed
 	var posicaoY = parseInt(Math.random() * 334); // Enemy Vertical Position
 	
+	/*** SOUND VARIABLES ***/
+	var somDisparo=document.getElementById("somDisparo");
+	var somExplosao=document.getElementById("somExplosao");
+	var musica=document.getElementById("musica");
+	var somGameover=document.getElementById("somGameover");
+	var somPerdido=document.getElementById("somPerdido");
+	var somResgate=document.getElementById("somResgate");
+
+	
+	//Background music loop
+	musica.addEventListener("ended", function(){ musica.currentTime = 0; musica.play(); }, false);
+	musica.play();
+
 	/*** OTHER VARIABLES***/
 
 	var TECLA = {
@@ -145,6 +155,7 @@ function start() { // Inicio da função start()
 	
 		if (shot1Ready) {
 			
+			somDisparo.play();
 			shot1Ready = false;
 			topo = parseInt($("#jogador").css("top"))
 			posicaoX= parseInt($("#jogador").css("left"))
@@ -174,6 +185,7 @@ function start() { // Inicio da função start()
 	
 		if (shot2Ready) {
 			
+			somDisparo.play();
 			shot2Ready = false;
 			topo = parseInt($("#jogador").css("top"))
 			posicaoX= parseInt($("#jogador").css("left"))
@@ -244,29 +256,28 @@ function start() { // Inicio da função start()
 		// Disparo com o inimigo1
 				
 			if (chopperHit.length>0 || chopperBomb.length>0) {
-								
-			inimigo1X = parseInt($("#inimigo1").css("left"));
-			inimigo1Y = parseInt($("#inimigo1").css("top"));
+				somExplosao.play();					
+				inimigo1X = parseInt($("#inimigo1").css("left"));
+				inimigo1Y = parseInt($("#inimigo1").css("top"));
 						
-			explosao1(inimigo1X,inimigo1Y);
-			score += 100;
-			velocidade += 1;
-			//Displace projectiles
-			if (chopperHit.length>0)
-			$("#disparo").css("left",950);
-			if (chopperBomb.length>0)
-			$("#missile").css("top",1000);
+				explosao1(inimigo1X,inimigo1Y);
+				score += 100;
+				velocidade += 1;
+				//Displace projectiles
+				if (chopperHit.length>0)
+					$("#disparo").css("left",950);
+				if (chopperBomb.length>0)
+					$("#missile").css("top",1000);
 				
-			posicaoY = parseInt(Math.random() * 334);
-			$("#inimigo1").css("left",920);
-			$("#inimigo1").css("top",posicaoY);
-				
+				posicaoY = parseInt(Math.random() * 334);
+				$("#inimigo1").css("left",920);
+				$("#inimigo1").css("top",posicaoY);	
 			}	
 		
 		// Disparo com o inimigo2
 				
 			if (truckHit.length>0 || truckBomb.length>0) {
-				
+				somExplosao.play();
 				//Displace projectiles
 				if (truckHit.length>0)
 				$("#disparo").css("left",950);
@@ -281,12 +292,14 @@ function start() { // Inicio da função start()
 		// Player and Ally. Will only rescue if within door range.
 		
 			if (rescued.length>0 && parseInt($("#amigo").css("right")) > 770) {
+				somResgate.play();
 				$("#amigo").remove();
 				score += 200;
 				safe++;
 			}
 		// Enemy and Ally			
 			if (ranOver.length>0) {
+				somPerdido.play();
 				explosao3();
 				$("#amigo").remove();
 				score -= 500;
