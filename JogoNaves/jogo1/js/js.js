@@ -25,6 +25,7 @@ function start() { // Inicio da função start()
 	var posicaoY = parseInt(Math.random() * 334); // Enemy Vertical Position
 	
 	/*** SOUND VARIABLES ***/
+	var missileSound =document.getElementById("missileSound");
 	var somDisparo=document.getElementById("somDisparo");
 	var somExplosao=document.getElementById("somExplosao");
 	var musica=document.getElementById("musica");
@@ -155,7 +156,7 @@ function start() { // Inicio da função start()
 	
 		if (shot1Ready) {
 			
-			somDisparo.play();
+			missileSound.play();
 			shot1Ready = false;
 			topo = parseInt($("#jogador").css("top"))
 			posicaoX= parseInt($("#jogador").css("left"))
