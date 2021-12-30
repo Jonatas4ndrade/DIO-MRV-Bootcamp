@@ -2,15 +2,31 @@
 
 @font-face {
 	font-family: title;
-	src:url(../fontes/ANODETONOONE.TTF);
+	src:url(../fontes/armalite.TTF);
 }
-
+@font-face {
+	font-family: score;
+	src:url(../fontes/cargo_army.TTF);
+}
+@font-face {
+	font-family: par;
+	src:url(../fontes/gunplay.TTF);
+}
 h1 {
 	font-family:title;
 	font-size:40px;
-	color:#603A03;
+	color:#211202;
 }
 
+h2 {
+	font-family:score;
+	font-size:20px;
+	color:#FFF
+}
+p {
+	font-family:par;
+	color:#3a2103;
+}
 body {
 	background-image:url(../imgs/fundo.jpg);
     background-size: cover;
@@ -22,7 +38,7 @@ body {
 #container{
 	margin-top: calc(50vh - 315px);
 	display:flex;
-	align-items: stretch;
+	align-items: center;
 	width:950px;
 	height:auto;
 	position:relative;
@@ -32,17 +48,35 @@ body {
 }
 
 #inicio {
+	background-image:url(../imgs/fundo_inicio.jpg);
 	display:flex;
 	flex-direction: column;
 	background-color:#FFF;
  	margin-left:11em;
     margin-right:11em;
- 	margin-top:100px;
-	text-align:center;
-	padding:10px;
+ 	margin-top:65px;
+	text-align: center;
+	padding:3em;
 	border-color:#2b1d02;
 	border-style:solid;
 
+}
+
+#placar {
+	width: 450px;
+	height: 50px;
+	position: absolute;
+	left: 5px;
+	top: 590px;
+	white-space: nowrap;
+}
+
+#energy {
+	width: 140px;
+	height: 38px;
+	position: absolute;
+	left: 790px;
+	top: 7px;	
 }
 
 #fundoGame {
@@ -61,7 +95,7 @@ body {
 	position:absolute;
 	left:8px;
 	top:179px;
-background-image:url(../imgs/apache.png);
+	background-image:url(../imgs/apache.png);
 
 }
 
@@ -79,7 +113,7 @@ background-image:url(../imgs/apache.png);
 	width: 165px;
 	height: 70px;
 	position: absolute;
-	left: 1050px;
+	left: 1210px;
 	top: 447px;
 	background-image: url(../imgs/inimigo2.png);
 }
@@ -88,7 +122,7 @@ background-image:url(../imgs/apache.png);
 	width: 44px;
 	height: 51px;
 	position: absolute;
-	left: 10px;
+	right: -120px;
 	top: 464px;
 	background-image:url(../imgs/executive.png);
 }
@@ -124,6 +158,13 @@ background-image:url(../imgs/apache.png);
 	height:87px;
 	position:absolute;
 	
+}
+
+#explosao3 {
+	top: 464px;
+	width:44px;
+	height:51px;
+	position:absolute;
 }
 
 #brokenScreen{
@@ -165,6 +206,17 @@ background-image:url(../imgs/apache.png);
        -moz-animation: play2 .9s steps(12) infinite;
         -ms-animation: play2 .9s steps(12) infinite;
          -o-animation: play2 .9s steps(12) infinite;
+}
+
+.anima4 {
+	width:44px;
+	height:51px;
+	background-image:url(../imgs/ran_over.png);
+	animation:play4 .5s steps(7) infinite;
+	-webkit-animation: play4 .5s steps(7) infinite;
+       -moz-animation: play4 .5s steps(7) infinite;
+        -ms-animation: play4 .5s steps(7) infinite;
+         -o-animation: play4 .5s steps(7) infinite;
 }
 
 /*PLAY*/
@@ -232,4 +284,30 @@ background-image:url(../imgs/apache.png);
 @-o-keyframes play3 {
    from { background-position:0px; }
      to { background-position: -128px; }
+}
+
+/*PLAY4*/
+@keyframes play4 {
+	from {background-position:0px;}
+	to {background-position:-308px;}
+}
+
+@-webkit-keyframes play4 {
+   from { background-position:    0px; }
+     to { background-position: -308px; }
+}
+
+@-moz-keyframes play4 {
+   from { background-position:    0px; }
+     to { background-position: -308px; }
+}
+
+@-ms-keyframes play4 {
+   from { background-position:    0px; }
+     to { background-position: -308px; }
+}
+
+@-o-keyframes play4 {
+   from { background-position:    0px; }
+     to { background-position: -308px; }
 }
