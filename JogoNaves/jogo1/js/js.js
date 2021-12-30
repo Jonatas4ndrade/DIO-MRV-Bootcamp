@@ -311,6 +311,7 @@ function start() { // Inicio da função start()
 	/* EXPLOSIONS */
 
 	function playerDown() {
+		somExplosao.play();
 		//If a collision already exists and element is transparent
 		$("#brokenScreen").remove();
 		//Add explosion and broken glass entity.
@@ -435,7 +436,6 @@ function start() { // Inicio da função start()
 				//Truck will respawn from 1200 ~ 2200 px from left
 				$('#inimigo2').css("left", (Math.random() * 1000 + 1200))
 				$("#fundoGame").append("<div id=inimigo2></div");
-				
 				}
 				
 			}	
