@@ -155,7 +155,7 @@ function start() { // Inicio da função start()
 	function missile() {
 	
 		if (shot1Ready) {
-			
+			missileSound.currentTime = 0;
 			missileSound.play();
 			shot1Ready = false;
 			topo = parseInt($("#jogador").css("top"))
@@ -185,7 +185,7 @@ function start() { // Inicio da função start()
 	function bomb() {
 	
 		if (shot2Ready) {
-			
+			somDisparo.currentTime = 0;
 			somDisparo.play();
 			shot2Ready = false;
 			topo = parseInt($("#jogador").css("top"))
@@ -257,6 +257,7 @@ function start() { // Inicio da função start()
 		// Disparo com o inimigo1
 				
 			if (chopperHit.length>0 || chopperBomb.length>0) {
+				somExplosao.currentTime = 0; // still playing
 				somExplosao.play();					
 				inimigo1X = parseInt($("#inimigo1").css("left"));
 				inimigo1Y = parseInt($("#inimigo1").css("top"));
@@ -278,6 +279,7 @@ function start() { // Inicio da função start()
 		// Disparo com o inimigo2
 				
 			if (truckHit.length>0 || truckBomb.length>0) {
+				somExplosao.currentTime = 0;
 				somExplosao.play();
 				//Displace projectiles
 				if (truckHit.length>0)
@@ -312,6 +314,7 @@ function start() { // Inicio da função start()
 	/* EXPLOSIONS */
 
 	function playerDown() {
+		somExplosao.currentTime = 0;
 		somExplosao.play();
 		//If a collision already exists and element is transparent
 		$("#brokenScreen").remove();
