@@ -506,12 +506,12 @@ function start() { // Inicio da função start()
 			Wait... You're not the new developer intern that was supposed to arrive today... Are you?<p>`
 
 			$("#fim").html('<h1> Game Over </h1><p>You have travelled ' + Math.abs(score)/100 + " km away from the company HQ. BUT INTO THE WRONG DIRECTION!</p>" + message +
-			'<div id="restart" onClick="restart()"><h3>Jogar Novamente</h3></div>');
+			'<div id="restart" onClick="restart()"><h3>Play Again</h3></div>');
 
 		}
 		else {
 			$("#fim").html('<h1> Game Over </h1><p>You have travelled ' + score/100 + " km away from the company HQ.</p>" + message +
-			'<div id="restart" onClick="restart()"><h3>Jogar Novamente</h3></div>');
+			'<div id="restart" onClick="restart()"><h3>Play Again</h3></div>');
 		}
 	} // GameEnd finished
 
