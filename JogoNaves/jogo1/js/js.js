@@ -477,7 +477,7 @@ function start() { // Inicio da função start()
 		
 		if (1500 <= score && score < 2000) 
 			message = `<h2>Mission Complete</h2><p>Finally you're flying over the right district. The last hit triggered a severe gas leak however, and the pilot is forced to land. 
-			Looking on the bright side, the conference building is just a block ahead! It seems there is a barricade and a bunch of armed people on the other side. Looking on the back, a team signals to come forth. 
+			Looking on the bright side, the conference building is just a block ahead! It seems there is a barricade and a bunch of armed people on the other side. On the back entrance however, a team signals you to come forth. 
 			Upon your arrival, they start to grow uneasy, but after a few words it becomes clear that you are just civilians. As they saw people clad in green uniforms descending from an armed vehicle, aparently you were mistook
 			for reinforcements... It would be nice to known what is going on, but the clock is ticking and you know what to prioritize. Client first, always! Your team rushes to the conference room and everything seems to be 
 			running smoothly, if not by a huge noise outside. A bit later, the very company CEO enters the room! "Oh, it seems our designated executives made it in time! I do apologize for being a little late".
