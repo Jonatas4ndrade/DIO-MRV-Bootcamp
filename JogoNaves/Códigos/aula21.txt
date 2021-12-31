@@ -1,3 +1,0 @@
-***** js.js *****
-
-velocidade=velocidade+0.3;

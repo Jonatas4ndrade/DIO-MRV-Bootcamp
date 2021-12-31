@@ -1,4 +1,4 @@
-/*UI ELEMENTS */
+/* FONTS */
 
 @font-face {
 	font-family: title;
@@ -23,10 +23,21 @@ h2 {
 	font-size:20px;
 	color:#FFF
 }
+
+h3 {
+	font-family:title;
+	font-size:20px;
+	color:#603A03;
+
+}
+
 p {
 	font-family:par;
 	color:#3a2103;
 }
+
+/*UI ELEMENTS */
+
 body {
 	background-image:url(../imgs/fundo.jpg);
     background-size: cover;
@@ -60,6 +71,31 @@ body {
 	border-color:#2b1d02;
 	border-style:solid;
 
+}
+
+#fim {
+	background-image:url(../imgs/fundo_inicio.jpg);
+	position:relative;
+	height: 350px;
+	background-color:#FFF;
+ 	margin-left:11em;
+    margin-right:11em;
+ 	margin-top:65px;
+	text-align:center;
+	padding:3em;
+	border-color:#2b1d02;
+	border-style:solid;
+	overflow-y:scroll;
+	scrollbar-color: #2b1d02 #603A03;
+	z-index: 9;
+}
+
+#fim p{
+	text-align:justify;
+}
+
+#fim h2 {
+	color:#3a2103;
 }
 
 #placar {
@@ -171,7 +207,7 @@ body {
 	position:absolute;
 	width:100%;
 	height:100%;
-	z-index: 9;
+	z-index: 8;
 	opacity:85;
 	background-size: cover;
     background-repeat: no-repeat;

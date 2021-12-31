@@ -15,7 +15,7 @@ function start() { // Inicio da função start()
 	jogo.pressionou = [];
 
 	var score =0;
-	var safe = 2; //Pilot and narrator :P
+	var safe = 2; // Pilot and narrator :P
 	var lost = 0;
 	var curEnergy=3;
 
@@ -25,7 +25,7 @@ function start() { // Inicio da função start()
 	var posicaoY = parseInt(Math.random() * 334); // Enemy Vertical Position
 	
 	/*** SOUND VARIABLES ***/
-	var missileSound =document.getElementById("missileSound");
+	var missileSound=document.getElementById("missileSound");
 	var somDisparo=document.getElementById("somDisparo");
 	var somExplosao=document.getElementById("somExplosao");
 	var musica=document.getElementById("musica");
@@ -137,7 +137,6 @@ function start() { // Inicio da função start()
 				posicaoY = parseInt(Math.random() * 334);
 				$("#inimigo1").css("left", 900);
 				$("#inimigo1").css("top",posicaoY);
-				
 			}
 	} //Fim da função moveinimigo1()
 
@@ -231,7 +230,7 @@ function start() { // Inicio da função start()
 		
 		// jogador com o inimigo1
 			
-			if (colPlayerChopper.length>0) {
+			if (colPlayerChopper.length>0 && parseInt($("#inimigo1").css("left")) < 130) {
 				
 			inimigo1X = parseInt($("#inimigo1").css("left"));
 			inimigo1Y = parseInt($("#inimigo1").css("top"));
@@ -414,7 +413,7 @@ function start() { // Inicio da função start()
 	
 		if (curEnergy==0) {
 			$("#energy").css("background-image", "url(imgs/energia0.png)");
-			gameOver == true;			
+			gameEnd();			
 		}
 	
 	} // Fim da função energia()
@@ -444,5 +443,83 @@ function start() { // Inicio da função start()
 				
 			}	
 		}	
+	//Função GAME OVER
+	function gameEnd() {
+		gameOver=true;
+		musica.pause();
+		somGameover.play();
+		
+		window.clearInterval(jogo.timer);
+		jogo.timer=null;
+		
+		$("#jogador").remove();
+		$("#inimigo1").remove();
+		$("#inimigo2").remove();
+		$("#amigo").remove();
+		
+		$("#fundoGame").append("<div id='fim'></div>");
+		
+		var message = '';
+		//ENDINGS 
+		if (0 <= score && score < 500) 
+			message = `<h2>Familiar Grounds</h2> <p>As the aircraft crumbles apart, the pilot skillfully managed to make an emergency landing. 
+			With the chopper half sunk in what appears to be a swimming pool, you notice a peculiar potted plant with surprising familiarity. Could it be..?
+			After a quick turn to the other side, there is a very angry man approaching, sporting a purple shorts/crocs combo. 
+			By the look of his face... Yup, now there are no doubts you've seen that plant at your manager's summer residence...<p>`
+
+		if (500 <= score && score < 1500) 
+			message = `<h2>Landmark</h2><p>The tail rotor weakens and the chopper starts to spin. Before the worst happens, the aircraft descends in a spiral, somehow slowly
+			enough to perch over a flat rooftop without taking critical damage. There is zero chance it will ever fly out of there, however.
+			A scared shopkeeper shows up through a stairway that leads down to... A convenience store. They have a landine phone booth, which works despite the air coms jamming.
+			How convenient! Your boss said that it would be rough, but C plan was already in motion. A bit afterwars, holding a cold can and gazing upon the skyes which almost took your life,
+			a bit ago, you see a rocket dart by... Was that an executive strapped to it? Anyways, the meeting DID HAPPEN and a new skyscrapper was built soon after. 
+			A year later, the chopper still stands proundly over the roof, and the former convenience store became a tourist atraction, now a bar named "The Choplifter".<p>`
+		
+		if (1500 <= score && score < 2000) 
+			message = `<h2>Mission Complete</h2><p>Finally you're flying over the right district. The last hit triggered a severe gas leak however, and the pilot is forced to land. 
+			Looking on the bright side, the conference building is just a block ahead! It seems there is a barricade and a bunch of armed people on the other side. Looking on the back, a team signals to come forth. 
+			Upon your arrival, they start to grow uneasy, but after a few words it becomes clear that you are just civilians. As they saw people clad in green uniforms descending from an armed vehicle, aparently you were mistook
+			for reinforcements... It would be nice to known what is going on, but the clock is ticking and you know what to prioritize. Client first, always! Your team rushes to the conference room and everything seems to be 
+			running smoothly, if not by a huge noise outside. A bit later, the very company CEO enters the room! "Oh, it seems our designated executives made it in time! I do apologize for being a little late".
+			Impressed by both the company commitment and the number of green executives in the room, a big deal closed and a whole residential complex is built after the war ceased.
+			<b>In the aftermath, you got a promotion and a nice bonus!</b><p><p>What's the truth behind the CEO? What's going on? Get a higher score to discover!</p>`
+
+		if (score >= 2100) 
+			message = `<h2>Medal Awarded</h2><p>The conference building is already on sight! A barricade in set near the entry and armed personel are aiming towards the office. 
+			The pilot starts to descend anyways, but the speed is not going down! That last hit messed the main rotor control! 
+			The chopper sleighs trough the courtyard grass with such a grace that would make Santa himself proud, while a bunch of bushes aid in slowing down the aircraft.   
+			It spins sideways at last and the resulting halt is still abrupt, causing an executive to be launched trough the side door. Yet not an ordinary executive! He started as an office boy in the company years before
+			and after so many bumps in crownded streets and so many almost run-overs from rushed drivers when moving from conference to conference every day, his reflexes are honed to perfection! After pulling out a soleil grade stunt,
+			he lands on his feet, but the cumulated centripetal force hurls his suitcase in the temporal bone of a chiefly figure standing near the barricade. As the poor soul drops knocked cold, some surrounding men
+			drop their weapon in shock, while others shout and prepare to take aim. A split second later however everybody is fleeing in despair, as if a nigthmarish ghost was standing behind the still dizzy and befuddled Joe.
+			Seizing the opportunity, a third party breaks from the building towards the unconscious man. A huge noise follows on and a VTVL rocket lands in the courtyard. No wonder everybody was running away. 
+			Clad in bright green and orange, the very CEO alights from it, uttering a single phrase: "We're almost late!". As the client shall NEVER be left awaiting, everything is left behind as ` + safe + ` businessmen and the CEO rush 
+			into the conference room. Despite the initial shock, things are going smoothly until the secretary dashes in to turn the TV, as the news were announcing: "a key leader that played a major role in the war was located and captured,
+			aparently by some special forces that landed on an assault helicopter. Fearing the disadvantage brought by the potential information leak and the loss of leadership, the other side surrended. The civil war is over!"
+			After the authors of such an unthinkable feat came to public, the company achieved great success during the post-war resconstruction.
+			<b>In the aftermath, you were awarded a medal of honor by the president – and also a promotion and a nice bonus!</b><p>`
+	
+		if (score < 0) {
+
+			message = `<h2>True Identity</h2><p>Critical systems are down! As the aircraft comes to halt amongst the snapping of many branches, you discover yourself still alive, trapped in the canopy.
+			It seems the executive that invited you to start the journey is also yet alive, and still as grumpy... "Sequoias? How in heavens? Had you any idea to where were we heading? Where did you get your licence again?
+			Wait... You're not the new developer intern that was supposed to arrive today, are you?<p>`
+
+			$("#fim").html('<h1> Game Over </h1><p>You have travelled ' + Math.abs(score)/100 + " km away from the company HQ. BUT INTO THE WRONG DIRECTION!</p>" + message +
+			'<div id="restart" onClick="restart()"><h3>Jogar Novamente</h3></div>');
+
+		}
+		else {
+			$("#fim").html('<h1> Game Over </h1><p>You have travelled ' + score/100 + " km away from the company HQ.</p>" + message +
+			'<div id="restart" onClick="restart()"><h3>Jogar Novamente</h3></div>');
+		}
+	} // GameEnd finished
+
 	
 }
+
+function restart() {
+	somGameover.pause();
+	$("#fim").remove();
+	start();
+} //Restart finished
