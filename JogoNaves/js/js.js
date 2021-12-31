@@ -502,7 +502,7 @@ function start() { // Inicio da função start()
 		if (score < 0) {
 
 			message = `<h2>True Identity</h2><p>Critical systems are down! As the aircraft comes to halt amongst the snapping of many branches, you discover yourself still alive, trapped in the canopy.
-			It seems the executive that invited you to start the journey is also yet alive, and still as grumpy... "Sequoias? How in heavens? Had you any idea to where were we heading? Where did you get your license again?
+			It seems the executive that invited you to start this journey is also yet alive, and still as grumpy... "Sequoias? How in heavens? Had you any idea to where were we heading? Where did you get your license again?
 			Wait... You're not the new developer intern that was supposed to arrive today... Are you?<p>`
 
 			$("#fim").html('<h1> Game Over </h1><p>You have travelled ' + Math.abs(score)/100 + " km away from the company HQ. BUT INTO THE WRONG DIRECTION!</p>" + message +
