@@ -465,7 +465,7 @@ function start() { // Inicio da função start()
 			message = `<h2>Familiar Grounds</h2> <p>As the aircraft crumbled apart, the pilot skillfully managed to make an emergency landing. 
 			With the chopper half sunk in what appears to be a swimming pool, you notice a peculiar potted plant with surprising familiarity. Could it be..?
 			After a quick turn to the other side, there is a very angry man approaching, sporting a purple shorts/crocs combo. 
-			By the look of his face... There are no doubts you've seen that plant at your manager's summer residence...<p>`
+			By the look of his face, there are now no doubts you've seen that plant at your manager's summer residence...<p>`
 
 		if (500 <= score && score < 1500) 
 			message = `<h2>Landmark</h2><p>The tail rotor weakens and the chopper starts to spin. Before the worst happens, the aircraft descends in a spiral, somehow slowly
