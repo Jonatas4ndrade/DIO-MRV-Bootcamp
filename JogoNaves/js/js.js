@@ -486,13 +486,13 @@ function start() { // Inicio da função start()
 
 		if (score >= 2100) 
 			message = `<h2>Medal Awarded</h2><p>The conference building is already on sight! A barricade is set near the entry and armed personnel are aiming towards the office. 
-			The pilot starts to descend anyways, but the speed is not going down! That last hit messed up the main rotor control! 
-			The chopper sleighs through the courtyard grass with such a grace that would make Santa himself proud, while a bunch of bushes aid in slowing down the aircraft.   
+			Altough concerned, the pilot starts to descend anyways, but the speed is not going down... It seems that last hit messed up the main rotor control! 
+			The chopper sleighs through the courtyard grass with such a grace that would make Santa himself proud, while a bunch of bushes aid in slowing it down.   
 			It spins sideways at last and the resulting halt is still abrupt, causing an executive to be launched through the side door. Yet not an ordinary executive! He started as an office boy in the company years before
 			and after so many bumps in crowded streets and so many almost run-overs from rushed drivers when moving from conference to conference every day, his reflexes are honed to perfection! After pulling out a soleil grade stunt,
 			he lands on his feet, but the cumulated centripetal force hurls his suitcase in the temporal bone of a chiefly figure standing near the barricade. As the poor soul drops knocked cold, some surrounding men
 			drop their weapon in shock, while others shout and prepare to take aim. A split second later however everybody is fleeing in despair, as if a nightmarish ghost was standing behind the still dizzy and befuddled Joe.
-			Seizing the opportunity, a third party breaks from the building towards the unconscious man. A huge noise follows on and a VTVL rocket lands in the courtyard. No wonder everybody was running away. 
+			Seizing the opportunity, a third party breaks from the building towards the unconscious man. A huge noise follows on and a VTVL rocket lands in the courtyard. No wonder everybody was running away, it was just like a huge missile incoming. 
 			Clad in bright green and orange, the very CEO alights from it, uttering a single phrase: "We're almost late!". As the client shall NEVER be left waiting, everything is left behind as ` + safe + ` businessmen and the CEO rush 
 			into the conference room. Despite the initial shock, things are going smoothly until the secretary dashes in to turn the TV, as the news were announcing: "a key leader that played a major role in the war was located and captured,
 			apparently by some special forces that landed on an assault helicopter. Fearing the disadvantage brought by the potential information leak and the loss of leadership, the other side surrendered. The civil war is over!"
