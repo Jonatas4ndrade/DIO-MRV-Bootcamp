@@ -21,7 +21,6 @@ export default function Main() {
           iconName = 'user';
         }
 
-        // You can return any component that you like here!
         return <Feather name={iconName} size={size} color={color} />;
       },
 
