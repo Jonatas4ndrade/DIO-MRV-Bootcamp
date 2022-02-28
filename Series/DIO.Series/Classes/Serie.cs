@@ -26,7 +26,7 @@ namespace DIO.Series
         }
         public int getID(){
             return this.Id;
-        }
+        }        
         public bool isActive(){
             return this.EntryActive;
         }
@@ -34,7 +34,11 @@ namespace DIO.Series
         {
             this.EntryActive = false;
         }
-        // Overriding
+        // Used when updating
+        public void overrideID(int ID){
+            this.Id = ID;
+        }
+        // Overriding default ToString method
         public override string ToString()
         {
             //Using Enviroment.Newline for easy cross-platform support
@@ -43,7 +47,9 @@ namespace DIO.Series
             string concat = "Year: " + this.Year + nl; 
             concat += "Genre: " + this.Genre + nl;
             concat += "Title: " + this.Title + nl;
-            concat += "Description " + this.Description + nl;
+            concat += "Description: " + this.Description + nl;
+            concat += "Entry active: " + this.EntryActive + nl;
+
 
             return concat;
         }

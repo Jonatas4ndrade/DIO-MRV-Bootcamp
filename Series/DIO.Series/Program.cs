@@ -34,13 +34,16 @@ namespace DIO.Series
                         LandingMenu.showMainMenu();
                         break;
 					case '3':
-						//AtualizarSerie();
+						UpdateShowEntry();
+                        LandingMenu.showMainMenu();
 						break;
 					case '4':
-						//ExcluirSerie();
+						DeleteShowEntry();
+                        LandingMenu.showMainMenu();
 						break;
 					case '5':
-						//VisualizarSerie();
+						ViewShow();
+                        LandingMenu.showMainMenu();
 						break;
                     default:
                     	checkForBadInput(userInput);
@@ -50,7 +53,86 @@ namespace DIO.Series
             } while (userInput != 'X');
                                     
         }
+// MENU FUNCTIONS
+
+        private static void ListSeries()
+		{
+            Console.Clear();
+			Console.WriteLine("Registered shows: ");
+            Console.WriteLine("**************************************************************************************");
+			if (SeriesRepo.List().Count == 0)
+			{
+				Console.WriteLine("No shows in the entry :(");
+                Console.WriteLine("How about adding some?\n\n");
+                pause();
+                return;
+			}
+
+			foreach (var show in SeriesRepo.List())
+			{
+                // Prints ID, Title and status of each registered show, even if deleted – a flag is added in this case.
+				Console.WriteLine("#ID {0}: - {1} {2}", show.getID(), show.getTitle(), (!show.isActive() ? "*Deleted*" : ""));
+			}
+            pause();
+		}
+        private static void AddNewShow()
+		{
+            Console.Clear();
+			Console.WriteLine("Registering a new show.");
+            Console.WriteLine("**************************************************************************************");
+            //Gets user input
+			Serie newShow = getSerieFromUser();
+            //Insert new show entry the repo.
+			SeriesRepo.Insert(newShow);
+            Console.Write("\nNew show added.");	 
+            pause();
+		}
         
+        private static void UpdateShowEntry()
+		{
+            Console.Clear();
+			Console.WriteLine("Updating an entry.");
+            Console.WriteLine("**************************************************************************************");
+
+            Console.WriteLine("\nEnter the show ID: ");
+            int showID = int.Parse(Console.ReadLine());
+            // Gets user input
+			Serie newShow = getSerieFromUser();
+            // Sets new object to the correct ID. 
+            newShow.overrideID(showID);
+            // Update info into the repo.
+			SeriesRepo.Update(showID, newShow);
+            Console.Write("\n\nInfo updated.");	 
+            pause();
+		}
+        private static void DeleteShowEntry()
+		{
+            Console.Clear();
+			Console.WriteLine("Deleting an entry. Metadata will remain in archive for accountability.");
+            Console.WriteLine("**************************************************************************************");
+
+            Console.WriteLine("\nEnter the show ID: ");
+            int showID = int.Parse(Console.ReadLine());
+            
+			SeriesRepo.Delete(showID);
+            Console.Write("\n\nEntry deleted. Good riddance!");	 
+            pause();
+		}
+        private static void ViewShow()
+		{   
+            Console.Clear();
+			Console.WriteLine("\nViewing show info.");
+            Console.WriteLine("**************************************************************************************");
+            //Gets user input
+			Console.Write("Enter show ID: ");
+			int showID = int.Parse(Console.ReadLine());
+
+			Console.WriteLine("\n{0}", SeriesRepo.ReturnByID(showID));
+            pause();
+		}
+
+// UTILITY FUNCTIONS BELOW
+
         //Provides a "pause" between functions, lest the menu would render over the results.
         private static void pause(){
             Console.WriteLine("\nPress 'enter' to return.");
@@ -68,32 +150,10 @@ namespace DIO.Series
 		        Console.Write("\n\nEnter a numeric option listed above: ");	 
                 }
         }
-        private static void ListSeries()
-		{
-            Console.Clear();
-			Console.WriteLine("Registered shows: ");
-            Console.WriteLine("**************************************************************************************");
-			if (SeriesRepo.List().Count == 0)
-			{
-				Console.WriteLine("No shows in the entry :(");
-                Console.WriteLine("How about adding some?\n\n");
-                pause();
-                return;
-			}
-
-			foreach (var show in SeriesRepo.List())
-			{
-                // Prints ID, Title and status of each registered show, even if deleted – a flag is added in this case.
-				Console.WriteLine("#ID {0}: - {1} {2}", show.getID(), show.getTitle(), (!show.isActive() ? "*Excluído*" : ""));
-			}
-            pause();
-		}
-        private static void AddNewShow()
-		{
-			Console.WriteLine("\n\nRegistering a new show.");
-            Console.WriteLine("**************************************************************************************");
-
-			foreach (int i in Enum.GetValues(typeof(Genre)))
+ 
+        private static Serie getSerieFromUser(){
+                        
+            foreach (int i in Enum.GetValues(typeof(Genre)))
 			{
 				Console.WriteLine("{0}-{1}", i, Enum.GetName(typeof(Genre), i));
 			}
@@ -106,24 +166,20 @@ namespace DIO.Series
 			Console.Write("Enter the show title: ");
 			string titleInput = Console.ReadLine();
 
-			Console.Write("Enter the show's debut year: ");
+			Console.Write("Enter the show debut year: ");
 			int yearInput = int.Parse(Console.ReadLine());
 
 			Console.Write("Enter a nice description: ");
 			string descriptInput = Console.ReadLine();
 
-			Serie newShow = new Serie(id: SeriesRepo.NextID(),
+			Serie SerieFromUser = new Serie(id: SeriesRepo.NextID(),
 										genre: (Genre)genreInput,
 										title: titleInput,
 										year: yearInput,
 										descript: descriptInput);
 
-			SeriesRepo.Insert(newShow);
-            Console.Write("\nNew show added.");	 
-            pause();
-		}
-
-
+            return SerieFromUser;
+        }
 
     }
 }

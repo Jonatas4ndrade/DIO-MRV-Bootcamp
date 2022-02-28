@@ -1,11 +1,13 @@
 using System;
+using System.Globalization;
 namespace DIO.Series
 {
     public class Menu
     {
         // Gets current time
         DateTime CurrentTime = DateTime.Now;
-        
+        // Set target language below:
+        CultureInfo TimeSettings = new CultureInfo("en-US");
         // Prints Main Menu
         public void showMainMenu()
         {
@@ -13,9 +15,9 @@ namespace DIO.Series
             Console.Clear();
 
 
-            Console.WriteLine("                                      initialized {0}", CurrentTime.ToString("F"));
+            Console.WriteLine("                                     initialized {0}", CurrentTime.ToString("F",TimeSettings));
 
-            Console.WriteLine("\n");
+            Console.WriteLine("");
             Console.WriteLine("**************************************************************************************");
             Console.WriteLine("*________  .__           _________            .__                _________ .__  .__  *");
             Console.WriteLine("*\\______ \\ |__| ____    /   _____/ ___________|__| ____   ______ \\_   ___ \\|  | |__| *");
