@@ -27,6 +27,9 @@ namespace DIO.Series
         public int getID(){
             return this.Id;
         }
+        public bool getStatus(){
+            return this.EntryActive;
+        }
         public void hideEntry()
         {
             this.EntryActive = false;
@@ -44,6 +47,5 @@ namespace DIO.Series
 
             return concat;
         }
-
     }
 }
