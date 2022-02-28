@@ -1,3 +1,4 @@
+using System;
 namespace DIO.Series
 {
     public class Menu
@@ -35,6 +36,7 @@ namespace DIO.Series
             Console.WriteLine("|      X      |   Exit :(                           |   enjoy our retro selection.   |");
             Console.WriteLine("+----------------------------------------------------+-------------------------------+\n");
 
+            Console.Write("Option: ");
    		}
     }
 }

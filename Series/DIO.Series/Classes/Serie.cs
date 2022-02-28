@@ -27,7 +27,7 @@ namespace DIO.Series
         public int getID(){
             return this.Id;
         }
-        public bool getStatus(){
+        public bool isActive(){
             return this.EntryActive;
         }
         public void hideEntry()
